@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Members</h1>
+    <form method="post" th:action="@{/new-member}" th:object="${newMember}">
+        <h2>Add Member</h2>
+        <label>Name: <input type="text" th:field="*{name}"> </label><br>
+        <label>Last Name: <input type="text" th:field="*{Lname}"> </label><br>
+        <label>Email: <input type="text" th:field="*{email}"> </label><br>
+        <label>Phone Number: <input type="text" th:field="*{PhoneNumber}"> </label><br>
+        <input type="submit" value="Add member"></input>
+    </form>
+    <a th:href="@{/home}">Home</a>
+    <a th:href="@{/members}">Members</a>
+</body>
+</html>

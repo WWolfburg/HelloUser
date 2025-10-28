@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Member List</h1>
+    
+   
+    <div th:if="${#lists.isEmpty(members)}">
+        <p>No members in the list.</p>
+        <p><a th:href="@{/add-member}">Add your first new member</a></p>
+    </div>
+    
+
+    <ul th:if="${!#lists.isEmpty(members)}">
+        <li th:id="${members.id}" th:each="members : ${members}">
+            <div th:id="${members.FnLname}">
+
+                <span th:text="${members.name}">Name</span>
+                <span th:text="${members.Lname}">Last Name</span>
+
+            </div>
+                
+
+            <ul>
+                    
+                    <span th:text="${members.email}">Email</span><br><br>
+                    <span th:text="${members.PhoneNumber}">Phone Number</span><br><br>
+                
+            </ul>
+        </li>
+    </ul>
+        <a th:href="@{/home}">Home</a>
+</body>
+</html>
