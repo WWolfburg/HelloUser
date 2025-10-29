@@ -11,7 +11,7 @@ public class Members {
     private String PhoneNumber;
     private String FnLname;
 
-    // Default constructor for Jackson
+    
     public Members() {
     }
 

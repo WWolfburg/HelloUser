@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/admin")
 
 public class adminController {
-    
+
     private final Map<String,String> tokens = new ConcurrentHashMap<>();
 
   @PostMapping("/login")
@@ -38,7 +38,15 @@ public class adminController {
       : ResponseEntity.status(401).body(Map.of("valid", false));
   }
 
-  // enkel åtkomst för interceptorn
+  
   @Bean public Map<String,String> tokenStore() { return tokens; }
+
+@PostMapping("/logout")
+public ResponseEntity<?> logout(@RequestBody Map<String, String> body) {
+    String token = body.get("token");
+    if (token != null) tokens.remove(token);
+    return ResponseEntity.ok(Map.of("message", "Logged out"));
+}
+
 }
 
