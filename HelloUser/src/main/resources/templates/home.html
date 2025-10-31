@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <title>Home</title>
 </head>
 <body>
-    <h1>Home</h1>
-    <div> 
-        <a th:href="@{/members}">Members</a><br><br>
-        
-       
-        <div th:if="${isAdmin}">
-            <p><strong>Admin Menu:</strong></p>
-            <a th:href="@{/add-member}">Add Member</a><br>
-            <a th:href="@{/logout}">Logout</a>
+        <div class="headerDiv">
+            <div class="header-links" style="display: flex; align-items: center; width: 100%;">
+                <a class="linkPlacement" th:href="@{/members}">Members</a>
+                <a class="homeAddMember" th:href="@{/home}">Home</a>
+                <h1 class="headerHome" style="flex:1; text-align: center; margin: 0;">Home</h1>
+                <span th:if="${isAdmin}" style="display: flex; align-items: center;">
+                    <a class="linkPlacement" th:href="@{/add-member}" style="margin-right: 8px;">Add Member</a>
+                    <a th:href="@{/logout}" class="logout-link" style="margin-right: 0;">Logout</a>
+                </span>
+                <span th:if="${!isAdmin}">
+                    <a th:href="@{/login}" class="adminLogin">Admin Login</a>
+                </span>
+            </div>
         </div>
-        
-        <div th:if="${!isAdmin}">
-            <a th:href="@{/login}">Admin Login</a>
-        </div>
-    </div>
+        <img class="homeLogo" src="/img/KotterietLogo.png" alt="">
 </body>
 </html>

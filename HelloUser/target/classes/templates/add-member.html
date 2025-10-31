@@ -4,18 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body>
-    <h1>Members</h1>
-    <form method="post" th:action="@{/new-member}" th:object="${newMember}">
-        <h2>Add Member</h2>
-        <label>Name: <input type="text" th:field="*{name}"> </label><br>
-        <label>Last Name: <input type="text" th:field="*{Lname}"> </label><br>
-        <label>Email: <input type="text" th:field="*{email}"> </label><br>
-        <label>Phone Number: <input type="text" th:field="*{PhoneNumber}"> </label><br>
-        <input type="submit" value="Add member"></input>
-    </form>
-    <a th:href="@{/home}">Home</a>
-    <a th:href="@{/members}">Members</a>
+    <div class="headerDiv" style="display: flex; align-items: center;">
+    <a class="linkPlacement" th:href="@{/members}" style="margin-right: 32px;">Members</a>
+    <a class="homeAddMember" th:href="@{/home}" style="margin-right: 16px;">Home</a>
+    <h1 class="headerHome" style="flex:1; text-align: center; margin: 0;">Add Member</h1>
+    </div>
+    <div class="addMemberContainer logoBackground">
+        <form class="addMemberForm popForm" method="post" th:action="@{/new-member}" th:object="${newMember}">
+            <h2>Add Member</h2>
+            <label>Name: <input type="text" th:field="*{name}"> </label>
+            <label>Last Name: <input type="text" th:field="*{Lname}"> </label>
+            <label>Email: <input type="text" th:field="*{email}"> </label>
+            <label>Phone Number: <input type="text" th:field="*{PhoneNumber}"> </label>
+            <input type="submit" value="Add member"></input>
+        </form>
+    </div>
 </body>
 </html>
