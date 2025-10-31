@@ -1,59 +1,72 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Member List</h1>
-    
-   
-    <div th:if="${#lists.isEmpty(members)}">
-        <p>No members in the list.</p>
-        <p><a th:href="@{/add-member}">Add your first new member</a></p>
-    </div>
-    
-
-    <ul th:if="${!#lists.isEmpty(members)}">
-        <li th:id="${members.id}" th:each="members : ${members}">
-            <div th:id="${members.FnLname}">
-
-                <span th:text="${members.name}">Name</span>
-                <span th:text="${members.Lname}">Last Name</span>
-                
-                
-                <!-- Temporary GET link for testing -->
-                <a th:if="${isAdmin}" 
-                   th:href="@{/delete-member-get/{memberId}(memberId=${members.id})}"
-                   onclick="return confirm('Are you sure you want to delete this member?')"
-                   style="color: red; text-decoration: none; margin-left: 10px;">[X]</a>
-
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" th:href="@{/css/style.css}" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="rightBorder">
+        </div>
+        <div class="leftBorder">
+        </div>
+        <div class="headerDiv" id="headerMembers" style="display: flex; align-items: center; width: 100%;">
+            <div style="display: flex; align-items: center; width: 100%;">
+                <a class="linkPlacement" th:href="@{/members}" style="margin-right: 32px;">Members</a>
+                <a class="homeAddMember" th:href="@{/home}" style="margin-right: 16px;">Home</a>
+                <h1 style="color: white; text-align: center; margin: 0; flex:1;">Our Members</h1>
+                <div style="display: flex; align-items: center; justify-content: flex-end;">
+                    <span th:if="${isAdmin}" style="display: flex; align-items: center;">
+                        <a class="linkPlacement" th:href="@{/add-member}" style="margin-right: 8px;">Add Member</a>
+                        <a th:href="@{/logout}" class="logout-link" style="margin-right: 0;">Logout</a>
+                    </span>
+                    <span th:if="${!isAdmin}">
+                        <a th:href="@{/login}" class="adminLogin">Admin Login</a>
+                    </span>
+                </div>
             </div>
-                
+        </div>
+        </div>
+        
+        
+        <div th:if="${#lists.isEmpty(members)}">
+            <p>No members in the list.</p>
+            <p><a th:href="@{/add-member}">Add your first new member</a></p>
+        </div>
+        
+        
+        <div class="membersLayout">
+            <img id="logoLeft" src="/img/LogoNT.png" alt="Left logo">
 
-            <ul>
-                    
-                    <span th:text="${members.email}">Email</span><br><br>
-                    <span th:text="${members.PhoneNumber}">Phone Number</span><br><br>
-                
+            <ul class="memberList" th:if="${!#lists.isEmpty(members)}">
+                <li th:id="${members.id}" th:each="members : ${members}">
+                    <div class="memberDiv" th:id="${members.FnLname}">
+                        <div class="memberName">
+                            <span th:text="${members.name}">Name</span>
+                            <span th:text="${members.Lname}">Last Name</span>
+                        </div>
+                        <a class="deleteMember" th:if="${isAdmin}" 
+                           th:href="@{/delete-member-get/{memberId}(memberId=${members.id})}"
+                           onclick="return confirm('Are you sure you want to delete this member?')"
+                           style="color: red; text-decoration: none; margin-left: 10px;"><img src="/img/skräp.png" alt="Delete"></a>
+                    </div>
+                    <div class="memberDetails">
+                        <ul>
+                            <span th:text="${members.email}" >Email</span><br>
+                            <span th:text="${members.PhoneNumber}">Phone Number</span>
+                        </ul>
+                    </div>
+                </li>
             </ul>
-        </li>
-    </ul>
+
+            <img id="logoRight" src="/img/LogoNT.png" alt="Right logo">
+        </div>
+
     
-    <div style="margin-top: 20px;">
-        <a th:href="@{/home}">Home</a>
         
-       
-        <span th:if="${isAdmin}">
-            | <a th:href="@{/add-member}">Add Member</a>
-            | <a th:href="@{/logout}">Logout</a>
-        </span>
-        
-     
-        <span th:if="${!isAdmin}">
-            | <a th:href="@{/login}">Admin Login</a>
-        </span>
-    </div>
-</body>
-</html>
+        <div class="pageEnd">
+            <img class="pageEnd-img" src="/img/footer.PNG" srcset="/img/footer@2x.PNG 2x" alt="footer texture" />
+        </div>
+    </body>
+    </html>

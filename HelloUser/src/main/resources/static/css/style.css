@@ -1,0 +1,410 @@
+.headerDiv .header-links a,
+.headerDiv .header-links .logout-link,
+.headerDiv .header-links .adminLogin {
+
+    margin-top: 48px;
+}
+.addMemberForm input[type="text"], .popForm input[type="text"] {
+    background-color: #e0e0e0 !important;
+    color: #000 !important;
+    border: 1px solid #bbb;
+}
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(34, 54, 94, 0.45); /* dark blue overlay */
+    z-index: 0;
+    pointer-events: none;
+}
+.popForm h2, .popForm label {
+    color: #397375;
+}
+.popForm input, .popForm input[type="submit"] {
+    background: #fff;
+    opacity: 1;
+    color: #222;
+}
+.popForm {
+    background: #fff;
+    border: 4px solid #397375;
+    box-shadow: 0 12px 48px 0 rgba(57,115,117,0.45), 0 3px 16px rgba(0,0,0,0.22);
+    color: #222;
+    z-index: 3;
+    padding: 48px 36px;
+    opacity: 1;
+    transform: scale(1.04);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+.popForm h2, .popForm label {
+    color: #397375;
+}
+.popForm input[type="submit"] {
+    background: #397375;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 14px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 14px;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px rgba(57,115,117,0.18);
+}
+.popForm input[type="submit"]:hover {
+    background: #285255;
+}
+
+.logoBackground {
+    background: url('/img/KotterietLogo.png') no-repeat center center;
+    background-size: 60vw auto;
+    position: relative;
+    min-height: 70vh;
+    z-index: 1;
+}
+.logoBackground .addMemberForm, .logoBackground > div {
+    position: relative;
+    z-index: 2;
+    opacity: 1;
+}
+
+.addMemberContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+}
+
+.addMemberForm {
+    background: rgba(255,255,255,0.08);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    padding: 32px 28px;
+    max-width: 420px;
+    width: 100%;
+    margin: 24px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.addMemberForm h2 {
+    color: #000 !important;
+    font-size: 28px;
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.addMemberForm label {
+    color: #000 !important;
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.addMemberForm input[type="text"] {
+    background: #e0e0e0;
+    color: #000;
+    color: #222;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.addMemberForm input[type="submit"] {
+    background: #FFD700 !important;
+    color: #000 !important;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 12px;
+    font-size: 17px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.2s;
+}
+.addMemberForm input[type="submit"]:hover {
+    background: #285255;
+}
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(57, 115, 117);
+    margin: 0;
+    padding: 0;
+    padding-bottom: 60px; 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+}
+
+.pageEnd {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 40px; 
+    z-index: 9999;
+    background: none;
+    overflow: hidden;
+}
+
+.pageEnd-img {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    object-fit: cover; 
+    display: block;
+}
+
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .pageEnd { background-image: url('/img/footer@2x.PNG'); background-size: 100% 60px; }
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+input[type="text"], input[type="password"] {
+
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    align-items: center;
+}
+
+
+.adminMenu {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+}
+.adminLogin {
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px;
+    position: absolute;
+    top: 50px;
+    right: 1px;
+    
+}
+#addMember {
+    margin-right: 30px;
+}
+.adminLogout {
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px;
+    position: absolute;
+    top: 50px;
+    right: 1px;
+}
+
+
+.headerDiv {
+    display: flex;
+    align-items: center;
+    background-color: #222;
+    padding: 5px;
+    height: 100px;
+    min-height: 100px;
+    max-height: 100px;
+    overflow: hidden;
+}
+
+.headerDiv .header-links {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.headerDiv .header-links a,
+.headerDiv .header-links .logout-link,
+.headerDiv .header-links .adminLogin {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    background: none;
+    border: none;
+    margin-right: 16px;
+    position: static;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.headerDiv .header-links .logout-link {
+    margin-right: 0;
+    top: 6px;
+}
+
+
+.headerDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: #222;
+    padding: 5px;
+    height: 100px;
+    min-height: 100px;
+    max-height: 100px;
+    overflow: hidden;
+}
+#headerMembers {
+ border-bottom: 1px solid rgb(24, 18, 4);
+
+}
+
+
+
+#headerMembers .linkPlacement,
+#headerMembers .logout-link {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    background: none;
+    border: none;
+    margin-right: 8px;
+    position: static;
+    padding: 0;
+}
+
+#headerMembers .logout-link {
+    margin-right: 0;
+    top: 6px;
+}
+
+.headerHome{
+    color: white;
+    font-size: 40px;
+    margin: 0;
+}
+
+.homeLogo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: 40vw;     
+    height: auto;
+    margin: 2vh auto 0 auto;
+    
+}
+
+
+.memberList {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    max-width: 520px; 
+    width: 70%;
+    margin: 30px auto;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+.memberList li {
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(0,0,0,0.08);
+    padding: 8px 12px; /* tighter padding */
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    list-style: none;
+    font-size: 16px;
+}
+
+.memberList li .memberDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.memberName {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+
+.membersLayout {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 10px;
+}
+    
+
+
+.deleteMember img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    margin-left: 12px;
+
+}
+.deleteMember {
+    text-decoration: none;
+}
+
+.memberDetails {
+    list-style-type: none;
+    width: 100%;
+    margin: 8px 0 0 0;
+    border-radius: 6px;
+    text-align: left;
+    padding: 0;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.memberDiv {
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+    
+}
+#logoLeft, #logoRight {
+    position: relative; 
+    
+    width: clamp(120px, 18vw, 320px);
+    height: auto;
+    max-height: 45vh; 
+    object-fit: contain;
+    align-self: flex-start;
+    margin-top: 18px; 
+}
+
+#logoLeft {
+    transform: scaleX(-1);
+}
+.headerDiv a.logout-link {
+  position: relative;
+  top: 6px;
+}

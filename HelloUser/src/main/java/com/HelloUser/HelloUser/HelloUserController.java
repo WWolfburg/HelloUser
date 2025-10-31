@@ -31,11 +31,7 @@ import java.io.File;
             File projectRoot = new File(System.getProperty("user.dir"));
             File resourcesDir = new File(projectRoot, "HelloUser/src/main/resources");
             
-            if (!resourcesDir.exists()) {
-                boolean created = resourcesDir.mkdirs();
-            } else {
-            }
-            
+       
             File jsonFile = new File(resourcesDir, "members.json");
             
             mapper.writerWithDefaultPrettyPrinter()
@@ -62,21 +58,11 @@ import java.io.File;
                     List<Members> loadedMembers = mapper.readValue(jsonFile, 
                         new TypeReference<List<Members>>() {});
                     membersList.addAll(loadedMembers);
-                } else {
-                    
-                    try {
-                        File classpathFile = new File("src/main/resources/members.json");
-                        if (classpathFile.exists()) {
-                            List<Members> loadedMembers = mapper.readValue(classpathFile, 
-                                new TypeReference<List<Members>>() {});
-                            membersList.addAll(loadedMembers);
-                        } else {
-                        }
-                    } catch (Exception e2) {
-                    }
-                }
+                } 
             } catch (Exception e) {
+                System.out.println("Error loading members from JSON:");
                 e.printStackTrace();
+                
             }
         }
 
@@ -92,6 +78,13 @@ import java.io.File;
         membersList.add(newMember);
         saveToJson();
         return "redirect:/members";
+    }
+     @GetMapping("/")
+    public String getRoot(HttpSession session, Model model) {
+      
+        boolean isAdmin = session.getAttribute("isAdmin") != null;
+        model.addAttribute("isAdmin", isAdmin);
+        return "redirect:/home";
     }
 
     @GetMapping("/home")
@@ -123,7 +116,7 @@ import java.io.File;
     }
     
     @GetMapping("/member-detail/{memberId}")
-    public String getMovieDetails(@PathVariable UUID memberId , Model model) {
+    public String getMemberDetails(@PathVariable UUID memberId , Model model) {
         for (Members member : membersList) {
             if (member.getId().equals(memberId)) {
                 model.addAttribute("member", member);
@@ -142,8 +135,7 @@ import java.io.File;
     @PostMapping("/login") 
     public String postLogin(@RequestParam String username, 
                            @RequestParam String password, 
-                           HttpSession session,
-                           Model model) {
+                           HttpSession session,Model model) {
         if ("admin".equals(username) && "admin".equals(password)) {
             session.setAttribute("isAdmin", true);
             return "redirect:/members";
